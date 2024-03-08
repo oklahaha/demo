@@ -1,24 +1,25 @@
 package com.example.demo.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.model.User;
+import com.example.demo.repository.UserRepository;
 
 
-@RestController
+@Controller
+@RequestMapping(path = "/user")
 public class UserController {
+
+    @Autowired
+    private UserRepository userRepository;
     
-    @GetMapping("/user/list")
-    public List<User> listUser(@RequestParam String param) {
+    @GetMapping(path = "/list")
+    public Iterable<User> listUser() {
 
-        List<User> users = new ArrayList<>();
-
-        return users;
+        return userRepository.findAll();
     }
     
 }
