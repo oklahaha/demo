@@ -1,9 +1,9 @@
 package com.example.demo.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.model.User;
 
-public interface UserRepository extends CrudRepository<User, String>{
+public interface UserRepository extends JpaRepository<User, String>{
     User findByEmail(String email);
 }
